@@ -25,6 +25,7 @@
         <h1>
              Welcome <%= u.getFirstName()%> <%= u.getMiddleName()%> <%= u.getLastName()%>
         </h1> 
+        <a href="LogoutServlet">LogOut</a>
        <br>
     </body>
 </html>

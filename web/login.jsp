@@ -19,7 +19,7 @@
              Message msg = (Message)session.getAttribute("msg");
              if(msg != null) {
         %>
-        <h1 style="color:red">You have entered wrong username or password.</h1>
+        <h1 class=msg.cssClass style="color:red"><%=msg.getContent()%></h1>
         <%
             session.removeAttribute("msg");
             }
