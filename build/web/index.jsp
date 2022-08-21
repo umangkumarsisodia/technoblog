@@ -16,7 +16,8 @@
     </head>
     <body>
         <h1>TechnoBlog</h1>
-        <%@include file="signup.jsp" %>
-        <%@include file="login.jsp" %>
+        <button onclick="loginHandler()">Sign In</button>
+        <button onclick="signUpHandler()">Sign Up</button>
     </body>
+    <script src="./JS/app.js"></script>
 </html>
