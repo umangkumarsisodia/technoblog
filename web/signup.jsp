@@ -30,6 +30,8 @@
             <input type="password" name="confirmPassword" placeholder="Confirm password"/>
             <input type="checkbox" name="check"/><label>I accept all terms and conditions.</label><br>
             <input type="Submit" value="Submit"/>
+            <input value="clear"/>
+            
         </form>
     </body>
 </html>
