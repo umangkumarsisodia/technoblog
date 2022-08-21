@@ -5,21 +5,21 @@
 package com.techno.blog.servlets;
 
 import com.techno.blog.dao.Userdao;
-import com.techno.blog.helper.ConnectionProvide;
 import com.techno.blog.entities.user;
+import com.techno.blog.helper.ConnectionProvide;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Umang Kumar Sisodia
  */
-public class RegisterServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,57 +34,39 @@ public class RegisterServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>TechnoBlog - Sign Up</title>");            
+            out.println("<title>Login</title>");            
             out.println("</head>");
             out.println("<body>");
-            //out.println("<h1>Servlet RegisterServlet at " + request.getContextPath() + "</h1>");
+            //out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
             
-            //Fetching all data
+            //fetching form fields data
+            String username = request.getParameter("username");
+            String password = request.getParameter("password");
             
-            String checked = request.getParameter("check");
+            try {
+                 Userdao dao = new Userdao(ConnectionProvide.getConnection());
             
-            if(checked == null) {
-                out.println("Please accept terms and conditions.");
-            }
-            
-            else {
-                String fname = request.getParameter("fname");
-                String mname = request.getParameter("mname");
-                String lname = request.getParameter("lname");
-                String email = request.getParameter("email");
-                String username = request.getParameter("username");
-                String gender = request.getParameter("gender");
-                String about = request.getParameter("about");
-                String password = request.getParameter("password");
-                String cnfPassword = request.getParameter("confirmPassword");
+                user u = dao.getUserByUsername(username, password);
                 
-                
-                out.println(email);
-                try {
-                    //creating userdao object
-                    Userdao dao = new Userdao(ConnectionProvide.getConnection());
-                    if(dao.checkingUserExistence(username) == false) {
-                        user newUser = new user(fname, mname, lname, email, username, gender, about,  password);
-                
-                        if(dao.saveUser(newUser) == true) {
-                            out.println("Account created successfully....");
-                        }
-               
-                        else {
-                            out.println("Error");
-                        }
-                    }
-                    else {
-                        out.println("User already exists.");
-                    }
-                }catch(Exception e) {
-                    out.println(e.toString());
+                if(u == null) {
+                    out.println("You have entered wrong username or password.");
                 }
-  
+                else {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("user", u);
+                    response.sendRedirect("profile.jsp");
+                }
+            }catch(Exception e) {
+                out.println(e.toString());
             }
+         
+            
+            
+            
             out.println("</body>");
             out.println("</html>");
         }

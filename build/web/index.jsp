@@ -17,5 +17,6 @@
     <body>
         <h1>TechnoBlog</h1>
         <%@include file="signup.jsp" %>
+        <%@include file="login.jsp" %>
     </body>
 </html>

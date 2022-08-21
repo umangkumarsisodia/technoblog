@@ -36,4 +36,69 @@ public class Userdao {
   
         return isExecute;
     }
+    
+    //checking if user already exists
+    public boolean checkingUserExistence(String username) throws SQLException {
+        boolean isExist = false;
+        
+        String query = "SELECT * FROM user WHERE username=?";
+        PreparedStatement pstmt = this.con.prepareStatement(query);
+        pstmt.setString(1, username);
+        
+        ResultSet rs = pstmt.executeQuery();
+        
+        if(rs.next()) {
+            isExist= true;
+        }
+        
+        return isExist;
+    }
+    
+    //getting user info
+    public user getUserByUsername(String username, String password) throws SQLException {
+        user u = null;
+        
+        System.out.println(username);
+        System.out.println(password);
+        
+        String query = "SELECT * FROM user WHERE username=? and password=?";
+        PreparedStatement pstmt = this.con.prepareStatement(query);
+        pstmt.setString(1, username);
+        pstmt.setString(2, password);
+        
+        ResultSet rs = pstmt.executeQuery();
+        
+        if(rs.next()) {
+            u = new user();
+            
+            int id = rs.getInt("id");
+            u.setId(id);
+            
+            String fname = rs.getString("firstName");
+            u.setFirstName(fname);
+            
+            String mname = rs.getString("middleName");
+            u.setMiddleName(mname);
+            
+            String lname = rs.getString("lastName");
+            u.setLastName(lname);
+            
+            String email = rs.getString("email");
+            u.setEmail(email);
+            
+            String uname = rs.getString("username");
+            u.setUsername(uname);
+            
+            String gender = rs.getString("gender");
+            u.setGender(gender);
+            
+            String about = rs.getString("about");
+            u.setAbout(about);
+            
+            Timestamp createdAt = rs.getTimestamp("createdAt");
+            u.setDateTime(createdAt);
+            
+        }
+        return u;
+    }
 }
