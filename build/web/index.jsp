@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import = "java.sql.*" %>
+<jsp:directive.page import = "com.techno.blog.helper.ConnectionProvide"/>
 
 <!DOCTYPE html>
 <html>
@@ -15,5 +16,6 @@
     </head>
     <body>
         <h1>TechnoBlog</h1>
+        <%@include file="signup.jsp" %>
     </body>
 </html>
