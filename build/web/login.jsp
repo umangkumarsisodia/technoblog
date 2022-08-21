@@ -4,7 +4,9 @@
     Author     : Umang Kumar Sisodia
 --%>
 
+<%@page import="com.techno.blog.entities.Message"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,6 +15,15 @@
     </head>
     <body>
         <h1>Login</h1>
+        <%
+             Message msg = (Message)session.getAttribute("msg");
+             if(msg != null) {
+        %>
+        <h1 style="color:red">You have entered wrong username or password.</h1>
+        <%
+            session.removeAttribute("msg");
+            }
+        %>
         <form action="LoginServlet" method="POST">
             <input type="text"name="username" id="username" placeholder="Username" required="true"/>
             <input type="password" name="password" id="password" placeholder="Password" required="true"/>

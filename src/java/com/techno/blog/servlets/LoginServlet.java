@@ -5,6 +5,7 @@
 package com.techno.blog.servlets;
 
 import com.techno.blog.dao.Userdao;
+import com.techno.blog.entities.Message;
 import com.techno.blog.entities.user;
 import com.techno.blog.helper.ConnectionProvide;
 import java.io.IOException;
@@ -53,7 +54,11 @@ public class LoginServlet extends HttpServlet {
                 user u = dao.getUserByUsername(username, password);
                 
                 if(u == null) {
-                    out.println("You have entered wrong username or password.");
+//                    out.println("You have entered wrong username or password.");
+                      Message msg = new Message("You have entered wrong username or password.", "error", "alert-danger");
+                      HttpSession s = request.getSession();
+                      s.setAttribute("msg", msg);
+                      response.sendRedirect("login.jsp");
                 }
                 else {
                     HttpSession session = request.getSession();

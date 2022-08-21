@@ -1,9 +1,3 @@
-<%-- 
-    Document   : signup
-    Created on : 21-Aug-2022, 10:27:05 am
-    Author     : Umang Kumar Sisodia
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>

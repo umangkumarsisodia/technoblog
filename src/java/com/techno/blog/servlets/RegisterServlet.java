@@ -61,8 +61,7 @@ public class RegisterServlet extends HttpServlet {
                 String password = request.getParameter("password");
                 String cnfPassword = request.getParameter("confirmPassword");
                 
-                
-                out.println(email);
+               
                 try {
                     //creating userdao object
                     Userdao dao = new Userdao(ConnectionProvide.getConnection());
