@@ -19,7 +19,7 @@
             <label>Female</label><br>
             <input type="radio" name="gender" id="others" value="others"/>
             <label>Others</label><br>
-            <textarea name="about" rows="10" cols="20" placeholder="Tell about yourself..."></textarea><br>
+            <textarea name="about" rows="10" cols="20" placeholder="Tell about yourself..."></textarea-><br>
             <input type="password" name="password" placeholder="Password"/>
             <input type="password" name="confirmPassword" placeholder="Confirm password"/>
             <input type="checkbox" name="check"/><label>I accept all terms and conditions.</label><br>
