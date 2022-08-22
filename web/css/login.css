@@ -1,0 +1,7 @@
+.bgclr{
+background: radial-gradient(circle, rgba(0,255,196,1) 3%, rgba(1,66,78,1) 100%); width: 100% ; height: 100vh;
+}
+
+.form-container{
+    border: 1px solid #fff; padding: 50px 60px; margin-top: 20vh;
+}
