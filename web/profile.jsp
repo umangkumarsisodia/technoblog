@@ -26,6 +26,8 @@
              Welcome <%= u.getFirstName()%> <%= u.getMiddleName()%> <%= u.getLastName()%>
         </h1> 
         <a href="LogoutServlet">LogOut</a>
+        <button onclick="blogButtonHandle()">Create Blog</button>
        <br>
     </body>
+    <script src="./JS/app.js"></script>
 </html>
